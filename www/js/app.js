@@ -1,6 +1,6 @@
 angular.module('starter', ['ionic', 'ui.scroll'])
 
-.run(function($ionicPlatform) {
+.run(function($ionicPlatform, $rootScope) {
   $ionicPlatform.ready(function() {
     if (window.cordova && window.cordova.plugins.Keyboard) {
       // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -15,38 +15,42 @@ angular.module('starter', ['ionic', 'ui.scroll'])
     if (window.StatusBar) {
       StatusBar.styleDefault();
     }
+
+    $rootScope.doReload = function () {
+      $rootScope.$broadcast('DO_RELOAD');
+    };
   });
 })
 
 .controller('MainCtrl', function($scope) {
   $scope.hello = 'Hello Main Controller!';
 
-  // $scope.datasource = {
-  //   get: function(index, count, success) {
-  //     var result = [];
-  //     for (var i = index; i <= index + count - 1; i++) {
-  //       result.push({ content: 'item #' + i });
-  //     }
-  //     success(result);
-  //   }
-  // };
+  var reloadListener = $scope.$on('DO_RELOAD', function() {
+    if ($scope.adapter) {
+      $scope.adapter.reload();
+    }
+  });
 
-  var string = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz'
+  $scope.$on("$destroy", function() {
+    reloadListener();
+  });
 
-  var min = -10000, max = 1, delay = 0;
+  var string = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz';
+
+  var min = -1000, max = 0, delay = 0;
 
   $scope.datasource = {
     get: function(index, count, success) {
-      // console.log(index, count)
       setTimeout(function() {
         var result = [];
         var start = Math.max(min, index);
         var end = Math.min(index + count - 1, max);
         if (start <= end) {
           for (var i = start; i <= end; i++) {
-            result.push({ index: i , height: 100 + (Math.abs(i%3)*20)});
+            result.push({ index: i, height: 100 + (Math.abs(i % 3) * 20) });
           }
         }
+        console.log('Got ' + result.length + ' items [' + start + '..' + end + ']');
         success(result);
       }, delay);
     }

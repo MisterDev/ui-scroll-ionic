@@ -37,15 +37,15 @@
   <body ng-app="starter">
     <ion-pane>
       <ion-header-bar class="bar-stable">
-        <h1 class="title">Ionic Blank Starter!!</h1>
+        <h1 class="title">
+          Ionic Blank Starter!
+          <button ng-click="doReload()">Reload</button>
+        </h1>
       </ion-header-bar>
-      <ion-content ui-scroll-viewport >
-        <div ng-controller="MainCtrl">
-          <div style="text-align: center">{{hello}}</div>
-          <div ui-scroll="item in datasource" buffer-size="50"> 
-            <div class="item" ng-style="{'height': '100px'}">
-              {{"content # " + item.index}}
-            </div>
+      <ion-content ng-controller="MainCtrl" ui-scroll-viewport>
+        <div ui-scroll="item in datasource" buffer-size="10" adapter="adapter"> 
+          <div class="item" ng-style="{'height': item.height + 'px'}">
+            {{"content # " + item.index}}
           </div>
         </div>
       </ion-content>
