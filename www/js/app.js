@@ -24,9 +24,11 @@ angular.module('starter', ['ionic', 'ui.scroll'])
 
 .controller('MainCtrl', function($scope) {
   $scope.hello = 'Hello Main Controller!';
+  var counter = 0;
 
   var reloadListener = $scope.$on('DO_RELOAD', function() {
     if ($scope.adapter) {
+      counter = 0;
       $scope.adapter.reload();
     }
   });
@@ -34,8 +36,6 @@ angular.module('starter', ['ionic', 'ui.scroll'])
   $scope.$on("$destroy", function() {
     reloadListener();
   });
-
-  var string = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz';
 
   var min = -1000, max = 0, delay = 0;
 
@@ -47,7 +47,8 @@ angular.module('starter', ['ionic', 'ui.scroll'])
         var end = Math.min(index + count - 1, max);
         if (start <= end) {
           for (var i = start; i <= end; i++) {
-            result.push({ index: i, height: 100 + (Math.abs(i % 3) * 20) });
+            height = 50 + (counter++ * 2);
+            result.push({ index: i, height: height });
           }
         }
         console.log('Got ' + result.length + ' items [' + start + '..' + end + ']');

@@ -26,7 +26,7 @@
     <!-- ionic/angularjs js -->
     <script src="lib/ionic/js/ionic.bundle.js"></script>
 
-    <script src="lib/ionic/js/angular-ui/ui-scroll.js"></script>
+    <script src="lib/ionic/js/angular-ui/ui-scroll-pre1.6.2.js"></script>
 
     <!-- cordova script (this will be a 404 during development) -->
     <script src="cordova.js"></script>
@@ -45,7 +45,7 @@
       <ion-content ng-controller="MainCtrl" ui-scroll-viewport>
         <div ui-scroll="item in datasource" buffer-size="10" adapter="adapter"> 
           <div class="item" ng-style="{'height': item.height + 'px'}">
-            {{"content # " + item.index}}
+            {{"content # " + item.index + ' ' + item.height}}
           </div>
         </div>
       </ion-content>
