@@ -1,25 +1,21 @@
-Ionic App Base
-=====================
+This is an angular-ui-scroll Ionic demo based on starter template for the [Ionic Framework](http://ionicframework.com/).
 
-A starting project for Ionic that optionally supports using custom SCSS.
+### Run
 
-## Using this project
-
-We recommend using the [Ionic CLI](https://github.com/driftyco/ionic-cli) to create new Ionic projects that are based on this project but use a ready-made starter template.
-
-For example, to start a new Ionic project with the default tabs interface, make sure the `ionic` utility is installed:
+Install the ionic
 
 ```bash
-$ npm install -g ionic
+$ npm install -g ionic cordova
 ```
 
-Then run: 
+Run dev-server on 8100 port
 
 ```bash
-$ ionic start myProject tabs
+$ ionic serve
 ```
 
-More info on this can be found on the Ionic [Getting Started](http://ionicframework.com/getting-started) page and the [Ionic CLI](https://github.com/driftyco/ionic-cli) repo.
+Deploy on the android device
 
-## Issues
-Issues have been disabled on this repo, if you do find an issue or have a question consider posting it on the [Ionic Forum](http://forum.ionicframework.com/).  Or else if there is truly an error, follow our guidelines for [submitting an issue](http://ionicframework.com/submit-issue/) to the main Ionic repository.
+```bash
+$ ionic cordova run android --device
+```
