@@ -43,9 +43,10 @@
         </h1>
       </ion-header-bar>
       <ion-content ng-controller="MainCtrl" ui-scroll-viewport>
-        <div ui-scroll="item in datasource" buffer-size="10" adapter="adapter">
-          <div class="item" ng-style="{'height': item.height + 'px'}">
-            {{"content # " + item.index + ' ' + item.height}}
+        <div ui-scroll="msg in datasource" buffer-size="10" adapter="adapter">
+          <div class="m-header">
+            <span>{{msg.index}}</span>
+            <span class="ion-ios-arrow-down expand"></span>
           </div>
         </div>
       </ion-content>

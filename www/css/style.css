@@ -3,3 +3,25 @@
 	border: 1px solid green;
 	background-color: #bbb;
 }
+
+.m-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    /*min-height: 32px !important;*/
+}
+
+.picture-small {
+    margin-right: 10px;
+    border-radius: 50%;
+    /* border: 1px solid rgba(255, 255, 255, 0.3); */
+    width: 32px;
+    height: 32px;
+    min-width: 30px;
+    min-height: 30px;
+}
+
+.expand {
+    position: absolute;
+    right: 0px;
+}
